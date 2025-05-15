@@ -1,0 +1,95 @@
+viseval new prompt,key_insight,initial_criteria,refinement,answering
+"Your task is to evaluate the correctness and visual validity of the under-test data visualization related to astronomy that will be sent to you. You will return either ""No Error"", ""Minor Error"", or ""Major Error"" along with your rationale. The definitions of these errors are: 
+
+No Error: This indicates that this visualization conveys the same key information as the Ground Truth Visualization
+Minor Error: This indicates that this visualization could be fixed by making minor adjustments to the code or by clarifying under-specified details in the Visualization Query.
+Major Error: This indicates that this visualization has a major deviation from the ground truth visualization, ultimately conveying very different information.
+
+You will be given the visualization query that the visualization was created to fulfill, a ""gold image"" that is a completely correct fulfillment of the query that you can use to compare, and the corresponding ""under-test"" visualization created based on that requirement that you will assess the validity of. 
+
+These instructions must be followed when making your judgement: When you are evaluating a visualization, compare that visualization against the Ground Truth Visualization. You can also use the visualization query, and the code corresponding to the visualization query to inform your judgments. However, the main question you are being asked is: Does this visualization convey the same key information as the ground truth visualization? 
+
+In addition to the gold image and under-test image, you will recieve the gold visualization code responsible for creating the visualization, and also the under-test code for the under-test visualization to help you analyze the differences. Note that this is a supplement and the bulk of your judgement should come from evaluating the images, because we are assessing what the images convey visually. 
+
+
+Please think carefully and provide your reasoning and score.
+
+```
+{
+  ""Rationale"": ""a brief reason"",
+  ""Errors"": ""No Error"", ""Minor Error"", or ""Major Error"",
+}
+```","I am going to send you a data visualization related to astronomy. You are going to give me the main 1-3 scientific insights that this visualization was meant to convey. The amount of detail you need to go into will vary case-by-case. If it is something more mundane, something like ""This graph shows a transit curve for  a planet around the star x"" is alright. However, if the transit curve has more interesting features that are being conveyed in the visualization, your answer will be something like: ""This graph shows a transit curve for a planet around the star x. There are uneven dips in brightness, suggesting that the transiting planet is disintegrating."" Feel free to reason this out and tell me your reasoning, but I also want you to return the main point(s) on their own. Formatting example:
+
+```
+{{
+  \""rationale\"": \""a brief reason\"",
+  \""key_insights\"": ""This graph shows a transit curve for a planet around the star x. There are uneven dips in brightness, suggesting that the transiting planet is disintegrating.""
+}}
+```","I am going to send you two data visualizations involving astronomy. The first one I send you will be a correct, ground-truth image created by a professional astronomer. The second is a re-creation and I am interested in testing its validity and seeing if it conveys the same overall information in the same way as the ground-truth. Your task is to come up with an EXHAUSTIVE list of criteria/questions that if answered, will shed light on whether or not the second visualization is as valid as the ground-truth. You will also add the sample answers for this, which will be useful to compare with answers for other visualizations later. I will tell you the """"main point"""" of the original visualization. You will then use that to create the criteria. You will send me a JSON list of questions. One of the parts of each JSON criteria is """"valid_question"""", mark all the ones you will generate as true. A very important requirement is that you don't reference the ground truth in your questions. For example: asking 'are the visualization's axes scaled the same as the ground-truth's axes?' is BAD AND NOT DESIRED. Don't write it that way. Instead, 'are the visualization's axes logarithmically scaled' is a more desirable question. IT IS GREATLY DESIRED THAT YOU USE NUMBERS AND READ THE VISUALIZATION IF POSSIBLE. A question like ""does the transit curve dip to .995 flux?"" is the most desirable and valuable kind of question possible because it is directly obtaining info from the ground truth to test a re-creation. IT IS EXTREMELY IMPORTANT THAT EVERYTHING YOU RETURN TO ME IS VALID AND PARSEABLE JSON. Also add the answer to this question for the current plot. Here is an example: ```
+```
+{{
+  ""criteria"" : {
+    {
+      ""insight"" : ""Does the visualization show a linear relationship between x and y?"",
+      ""answer"" : ""Yes""
+    }
+    {
+      ""insight"" : ""Is the gradient used effectively in the visualization?"",
+      ""answer"" : ""Yes""
+    }
+}
+}}
+```
+Key Insight: *keyinsight*","""I am going to send you a visualization depicting scientific astronomy data, and a key scientific insight that someone looking at the visualization should take away from it. Along with this, I will send you a list of questions about the image that when answered about another image attempting to re-create this visualization, will shed light on whether the attempted re-creation achieved conveying the key insight of the original. Your task is to JUDGE THE QUESTIONS that are present in this list. You will evaluate at each question and remove it from the JSON if it is not a scientifically useful questions (E.g ""Are the colors of the points blue?""), OR if it is a duplicate/re-statement of a previous question. Then, you will add in more questions that are scientifically relevant. A question like ""does the transit curve dip to .995 flux?"" is the most desirable and valuable kind of question possible because it is directly obtaining info from the ground truth to test a re-creation. You will return the edited list of JSON with the scientifically valid questions. IT IS EXTREMELY IMPORTANT THAT EVERYTHING YOU RETURN TO ME IS VALID AND PARSEABLE JSON. Here is the format, it is the same as the format of JSON you will be given: ```
+{{
+  ""criteria"" : {
+    {
+      ""insight"" : ""Does the visualization show a linear relationship between x and y?"",
+      ""answer"" : ""Yes""
+    }
+    {
+      ""insight"" : ""Is the gradient used effectively in the visualization?"",
+      ""answer"" : ""Yes""
+    }
+}
+}}
+```
+Key Insight: *keyinsight*
+Previous list: *prevlist*","You will recieve an astronomy data visualization that is under-test and a json list of questions, which are meant to evaluate whether or not the given visualization matches with a ground-truth, correct visualization.  You will answer the question for the vurrent visualization that is under-test, and using that answer, determine whether or not the difference in answer constitutes a ""Major Error"", ""Minor Error"", or ""No Error"".  I will also give you the key insight or main point that the visualization should be conveying, to help guide you: For definitions of these types of errors: 
+
+No Error: This indicates that this visualization conveys the same key information as the Ground Truth Visualization
+Minor Error: This indicates that this visualization could be fixed by making minor adjustments to the code or by clarifying under-specified details in the Visualization Query.
+Major Error: This indicates that this visualization has a major deviation from the ground truth visualization, ultimately conveying very different information.
+
+
+ So you will recieve something like {{
+  ""criteria"" : {
+    {
+      ""insight"" : ""Does the visualization show a linear relationship between x and y?"",
+      ""answer"" : ""Yes""
+    },
+    {
+      ""insight"" : ""Is the gradient used effectively in the visualization?"",
+      ""answer"" : ""Yes""
+    }
+  }
+}
+}}, Assuming the under-test visualization doesn't show a linear relationship, you would send back something like: 
+{{
+  ""json"": {
+  ""criteria"" : {
+    {
+      ""insight"" : ""Does the visualization show a linear relationship between x and y?"",
+      ""error"" : ""Major Error"",
+      ""answer"" : ""Yes.""
+    },
+    {
+      ""insight"" : ""Is the gradient used effectively in the visualization?"",
+      ""valid_question"" : ""No Error"",
+      ""answer"" : ""Yes""
+    }
+  }
+}} IT IS EXTREMELY IMPORTANT THAT EVERYTHING YOU RETURN TO ME IS VALID AND PARSEABLE JSON.
+Key Insight: *keyinsight*
+List: *prevlist*"

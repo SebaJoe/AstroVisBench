@@ -6,6 +6,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('infile')
 parser.add_argument('prefix')
+parser.add_argument('split_count')
 
 args = parser.parse_args()
 
@@ -24,7 +25,7 @@ def split_equal(lst, n):
         i += k + (1 if m > 0 else 0)
         m -= 1
 
-n = 10
+n = 10 if args.split_count is None else int(args.split_count)
 
 random.shuffle(ffq_all)
 

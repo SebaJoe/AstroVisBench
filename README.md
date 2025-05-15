@@ -1,6 +1,7 @@
 # AstroVisBench
 
-
+This is the repository containing the code needed to run the AstroVisBench benchmark. 
+The benchmark is available [here](https://huggingface.co/datasets/sebajoe/AstroVisBench) as a huggingface dataset. However, we highly recommend converting this benchmark into a JSON file in order to be used in along with scripts in this repository. You can find this raw JSON file [here](https://utexas.box.com/s/2evj5cs3u2gqndvgc9sd66cmlggl9fg1) under `astrovisbench_queries.json`.
 
 ## Environment Setup
 
@@ -23,6 +24,13 @@ This is optional but you can also download and decompress the **ground truth cac
 You can download the above files and the present state of the benchmark using this [link](https://utexas.box.com/s/2evj5cs3u2gqndvgc9sd66cmlggl9fg1).
 
 **CAUTION:** Setting up this enviornment and executing the benchmark will consume a large amount of storage. Please have at least 100 GB of free space available in your system.
+
+### Creating the Bench Environment
+
+Make sure to download both `bench_env.tar.gz` and `bench_env_add_on.tar.gz`.
+
+Once you have downloaded and decompressed both files, you should get two directories.
+Move all the sub-directories within in `bench_env_add_on` to `bench_environment`. Make sure you preserve the name of the sub-directories when you do this. If there are any duplicate sub-directories in `bench_environment`, remove them and copy again.
 
 ## Using the Benchmark
 
@@ -74,8 +82,7 @@ To combat this, you can specify the `--temp-caching` parameter, which will delet
 
 #### Multiprocessing
 
-Executing code does take a while. You may try to split the benchmark and execute sections parallely. However, the code being executed has no guarantee of thread safety. 
-
+This code supports multiprocessing through MPI. If you are running an MPI jobs
 
 #### Processing Evaluation
 
