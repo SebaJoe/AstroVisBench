@@ -1,4 +1,5 @@
-# AstroCodeBench Execution
+# AstroVisBench
+
 
 
 ## Environment Setup
