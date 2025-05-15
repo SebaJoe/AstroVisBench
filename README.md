@@ -51,9 +51,9 @@ The benchmark is a json file with the following schema:
 | - visualization_gen_code : TO BE FILLED OUT BY LLM - generated code responding to the visualization query
 ```
 
-You will need to use your target LLM to fill out the last two fields listed above. The code listed under these fields are what are being evaluated. The file `generate_code.py` is one possible way you could generate code for the purpose of this benchmark. 
+You will need to use your target LLM to fill out the last two fields listed above. The code listed under these fields are what are being evaluated. The file `generate_code.py` under the `generate_code` directory is one possible way you could generate code for the purpose of this benchmark.
 
-We recommend this setup for context given to the LLM:
+This is the setup we used to evaluate LLM in the AstroVisBench paper:
 - **Processing:** Setup Query, Ground Truth Setup Code, Processing Query + Processing Underspecifications
 - **Visualization:** Setup Query, Ground Truth Setup Code, Processing Query + Processing Underspecifications, Ground Truth Processing Code, Visualization Query
 

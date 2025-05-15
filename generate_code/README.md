@@ -1,6 +1,6 @@
 # Generate Code
 
-Here are scripts you can you use to query major LLM APIs to fill the benchmark.
+Here are scripts you can you use to query major LLM APIs to fill the benchmark. This is the same script that was used to prompt LLMs to respond to the benchmark in the paper. 
 
 Currently, this script supports API access to:
 - OpenAI
