@@ -1,0 +1,274 @@
+absl-py==2.1.0
+acstools==3.7.2
+aiobotocore==2.21.1
+aiohappyeyeballs==2.6.1
+aiohttp==3.11.14
+aioitertools==0.12.0
+aiosignal==1.3.2
+anaconda-anon-usage @ file:///croot/anaconda-anon-usage_1743190139881/work
+annotated-types @ file:///work/perseverance-python-buildout/croot/annotated-types_1728386958747/work
+anyio==4.9.0
+anywidget==0.9.16
+APLpy==2.2.0
+appnope==0.1.4
+archspec @ file:///croot/archspec_1709217642129/work
+argon2-cffi==23.1.0
+argon2-cffi-bindings==21.2.0
+arrow==1.3.0
+asciitree==0.3.3
+asdf==3.5.0
+asdf-astropy==0.7.1
+asdf_coordinates_schemas==0.3.0
+asdf_standard==1.1.1
+asdf_transform_schemas==0.5.0
+asdf_unit_schemas==0.2.0
+asdf_wcs_schemas==0.4.0
+asteval==1.0.6
+astrocut==0.9
+astrodata==2.10.1
+astrodendro==0.3.1
+astroML==1.0.2.post1
+astropy==6.1.7
+astropy-iers-data==0.2025.5.5.0.38.14
+astropy_healpix==1.1.2
+astroquery==0.4.7
+astroscrappy==1.2.0
+asttokens==3.0.0
+astunparse==1.6.3
+async-lru==2.0.5
+async-timeout==5.0.1
+attrs==25.3.0
+autograd==1.7.0
+babel==2.17.0
+backports.tarfile==1.2.0
+Batman==0.7.0
+batman-package==2.5.2
+BayesicFitting==3.2.3
+beautifulsoup4==4.13.3
+bleach==6.2.0
+bokeh==3.7.0
+boltons @ file:///croot/boltons_1737061692168/work
+botocore==1.37.1
+bqplot==0.12.44
+bqplot-gl==0.0.0
+bqplot-image-gl==1.6.1
+Brotli @ file:///croot/brotli-split_1736182456865/work
+bs4==0.0.2
+cachetools==5.5.2
+casa-formats-io==0.3.0
+casjobs==0.0.2
+ccdproc==2.4.3
+certifi @ file:///croot/certifi_1745939216646/work/certifi
+cffi @ file:///croot/cffi_1736182485317/work
+chardet==5.2.0
+charset-normalizer==3.4.1
+click==8.1.8
+cloudpickle==3.1.1
+comm==0.2.2
+conda @ file:///croot/conda_1743715288469/work/conda-src
+conda-anaconda-telemetry @ file:///croot/conda-anaconda-telemetry_1744662537425/work
+conda-anaconda-tos @ file:///croot/conda-anaconda-tos_1744823864153/work
+conda-content-trust @ file:///work/perseverance-python-buildout/croot/conda-content-trust_1728487058234/work
+conda-libmamba-solver @ file:///croot/conda-libmamba-solver_1745607008911/work/src
+conda-package-handling @ file:///croot/conda-package-handling_1731369017509/work
+conda_package_streaming @ file:///croot/conda-package-streaming_1731366181659/work
+configobj==5.0.9
+contourpy==1.3.1
+corner==2.2.3
+costools==1.2.6
+crds==12.1.4
+cryptography @ file:///croot/cryptography_1740577825284/work
+cycler==0.12.1
+Cython==3.0.12
+dask==2025.2.0
+DateTime==5.5
+debugpy==1.8.13
+decorator==5.2.1
+deepdiff==8.4.2
+defusedxml==0.7.1
+dill==0.3.9
+distlib==0.3.9
+distro @ file:///work/perseverance-python-buildout/croot/distro_1728396110052/work
+dl==0.1.0
+docutils==0.21.2
+drizzle==2.0.1
+dust_extinction==1.5
+dynesty==2.1.5
+echo==0.9.0
+et_xmlfile==2.0.0
+example==0.1.0
+exceptiongroup==1.2.2
+executing==2.2.0
+extinction==0.4.7
+fast-histogram==0.14
+fasteners==0.19
+fastjsonschema==2.21.1
+fastkde==2.1.3
+fbpca==1.0
+feedparser==6.0.11
+filelock==3.18.0
+fitsblender==0.4.4
+flatbuffers==25.2.10
+fonttools==4.56.0
+fqdn==1.5.1
+freetype-py==2.5.1
+frozendict @ file:///work/perseverance-python-buildout/croot/frozendict_1728497542215/work
+frozenlist==1.5.0
+fsspec==2025.3.0
+future==1.0.0
+gast==0.4.0
+gatspy==0.3
+gempy==2024.2.0.2
+gempy_engine==2024.2.0
+ginga==5.2.0
+glfw==2.8.0
+glue-astronomy==0.10.0
+glue-core==1.22.0
+glue-jupyter==0.23.1
+glue-vispy-viewers==1.2.2
+google-auth==2.38.0
+google-auth-oauthlib==1.0.0
+google-pasta==0.2.0
+grismconf==1.51
+grpcio==1.71.0
+gwcs==0.21.0
+h11==0.14.0
+h5py==3.13.0
+hasp==1.1.4
+healpy==1.18.0
+hsluv==5.0.4
+html5lib==1.1
+httpcore==1.0.7
+httpimport==1.4.1
+httplib2==0.22.0
+httpx==0.28.1
+humanize==4.12.1
+idna==3.10
+imageio==2.37.0
+importlib_metadata==8.6.1
+iniconfig==2.0.0
+ipyaladin==0.5.2
+ipydatawidgets==4.3.5
+ipygoldenlayout==0.4.0
+ipykernel==6.29.5
+ipympl==0.9.7
+ipypopout==2.0.0
+ipysplitpanes==0.2.0
+ipython==8.34.0
+ipython-genutils==0.2.0
+ipyvolume==0.6.3
+ipyvue==1.11.2
+ipyvuetify==1.11.1
+ipywebrtc==0.6.0
+ipywidgets==8.1.5
+isoduration==20.11.0
+jaraco.classes==3.4.0
+jaraco.context==6.0.1
+jaraco.functools==4.1.0
+jdaviz==4.2.0
+jedi==0.19.2
+Jinja2==3.1.6
+jmespath==1.0.1
+joblib==1.4.2
+json5==0.10.0
+jsonpatch @ file:///work/perseverance-python-buildout/croot/jsonpatch_1728399595941/work
+jsonpickle==4.0.5
+jsonpointer==3.0.0
+jsons==1.6.3
+jsonschema==4.23.0
+jsonschema-specifications==2024.10.1
+jupyter==1.1.1
+jupyter-console==6.6.3
+jupyter-events==0.12.0
+jupyter-lsp==2.2.5
+jupyter-rfb==0.5.1
+jupyter_client==8.6.3
+jupyter_core==5.7.2
+jupyter_server==2.15.0
+jupyter_server_terminals==0.5.3
+jupyterlab==4.3.6
+jupyterlab_pygments==0.3.0
+jupyterlab_server==2.27.3
+jupyterlab_widgets==3.0.13
+jwst==1.15.1
+keras==2.13.1
+keyring==25.6.0
+kiwisolver==1.4.8
+lazy_loader==0.4
+libclang==18.1.1
+libmambapy @ file:///croot/mamba-split_1734469461757/work/libmambapy
+lightkurve==2.5.0
+llvmlite==0.44.0
+lmfit==1.3.3
+locket==1.0.0
+looseversion==1.3.0
+LSSTDESC.Coord==1.3.0
+lxml==5.3.1
+Markdown==3.7
+markdown-it-py==3.0.0
+MarkupSafe==3.0.2
+mastcasjobs==0.0.7
+matplotlib==3.8.4
+matplotlib-inline==0.1.7
+mdurl==0.1.2
+memoization==0.4.0
+menuinst @ file:///croot/menuinst_1738943416351/work
+mistune==3.1.2
+ml_dtypes==0.5.1
+more-itertools==10.6.0
+mpl-scatter-density==0.8
+mplcursors==0.6
+multidict==6.2.0
+multiprocess==0.70.17
+namex==0.0.8
+narwhals==1.31.0
+nbclassic==1.2.0
+nbclient==0.10.2
+nbconvert==7.16.6
+nbformat==5.10.4
+ndcube==2.3.1
+nest-asyncio==1.6.0
+nestle==0.2.0
+networkx==3.4.2
+notebook==7.3.3
+notebook_shim==0.2.4
+numba==0.61.0
+numcodecs==0.13.1
+numexpr==2.10.2
+oauthlib==3.2.2
+oktopus==0.1.2
+opencv-python-headless==4.11.0.86
+openpyxl==3.1.5
+opt_einsum==3.4.0
+optree==0.14.1
+orderly-set==5.4.0
+orjson==3.10.18
+overrides==7.7.0
+packaging @ file:///croot/packaging_1734472117206/work
+pandocfilters==1.5.1
+Parsley==1.3
+parso==0.8.4
+partd==1.4.2
+pathlib==1.0.1
+patsy==1.0.1
+pbr==6.1.1
+pexpect==4.9.0
+platformdirs @ file:///croot/platformdirs_1744273042065/work
+pluggy @ file:///croot/pluggy_1733169602837/work
+pycosat @ file:///croot/pycosat_1736868416091/work
+pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+pydantic @ file:///croot/pydantic_1734736067156/work
+pydantic_core @ file:///croot/pydantic-core_1734726052986/work
+Pygments @ file:///croot/pygments_1744664109463/work
+PySocks @ file:///work/perseverance-python-buildout/croot/pysocks_1728386193338/work
+requests @ file:///croot/requests_1730999120400/work
+rich @ file:///croot/rich_1732638981168/work
+ruamel.yaml @ file:///croot/ruamel.yaml_1745960305322/work
+ruamel.yaml.clib @ file:///croot/ruamel.yaml.clib_1745937152469/work
+setuptools==78.1.1
+tqdm @ file:///croot/tqdm_1738943501192/work
+truststore @ file:///croot/truststore_1736550121485/work
+typing_extensions @ file:///croot/typing_extensions_1734714854207/work
+urllib3 @ file:///croot/urllib3_1737133630106/work
+wheel==0.45.1
+zstandard @ file:///croot/zstandard_1731356346222/work
