@@ -82,7 +82,7 @@ To combat this, you can specify the `--temp-caching` parameter, which will delet
 
 #### Multiprocessing
 
-This code supports multiprocessing through MPI. If you are running an MPI jobs
+This code supports multiprocessing through MPI. If you are running this script using an MPI job make sure to add the tag `--MPI`. You will need to split you benchmark JSON file into however many splits you will like. You can use `split_queries.py` to do this. These JSON splits must end in `<SPLIT NUMBER>.json`. Once this is done, you can start your MPI job by giving the prefix path of your splits (i.e. `bench_split_` is the prefix of `bench_split_0.json`) to `exec_bench.py` instead of the `<FILLED BENCHMARK>` argument. Similarly, the output files will have `<SPLIT NUMBER>.json` appended to its name when the script is run.
 
 #### Processing Evaluation
 
@@ -90,7 +90,7 @@ The variable inspection test is performed in tandem with the code execution (unl
 
 ### Visualization Evaluation
 
-After you are done executing, you can do the visualization evaluation with our LLM-as-a-judge method. Use the `vis_evaluation.py` script to do so as follows:
+After you are done executing, you can do the visualization evaluation with our LLM-as-a-judge method. Use the `vis_evaluation.py` script under the `vis_evaluation` directory to do so as follows:
 
 ```
 python vis_evaluation.py \
