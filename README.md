@@ -105,3 +105,19 @@ You will get three trials of error categorization and rationale output from the 
 ### Results Aggregation
 
 You can aggregate all the results after passing you benchmark json file through all these pipelines using the `aggregate_results.py`. This script will output a JSON dict containing the execution success rates for both the processing and visualization tasks, the average variable inspection scores, and the distribution of errors from the visualization evaluation.
+
+## Citation & License
+
+Please use the following citations if you found our work to be useful in your work.
+
+```
+@inproceedings{
+    joseph2025astrovisbench,
+    title={AstroVisBench: A Code Benchmark for Scientific
+Computing and Visualization in Astronomy},
+    author={Sebastian Joseph and Syed Murtaza Husain and Stella S. R. Offner and Stéphanie Juneau and Paul Torrey and Adam S. Bolton and Juan P. Farias and Niall Gaffney and Greg Durrett and Junyi Jessy Li},
+    booktitle={},
+    year={2025},
+    url={}
+}
+```
