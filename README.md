@@ -113,8 +113,7 @@ Please use the following citations if you found our work to be useful in your wo
 ```
 @inproceedings{
     joseph2025astrovisbench,
-    title={AstroVisBench: A Code Benchmark for Scientific
-Computing and Visualization in Astronomy},
+    title={AstroVisBench: A Code Benchmark for Scientific Computing and Visualization in Astronomy},
     author={Sebastian Joseph and Syed Murtaza Husain and Stella S. R. Offner and Stéphanie Juneau and Paul Torrey and Adam S. Bolton and Juan P. Farias and Niall Gaffney and Greg Durrett and Junyi Jessy Li},
     booktitle={},
     year={2025},
