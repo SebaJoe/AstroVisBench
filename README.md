@@ -99,3 +99,7 @@ python vis_evaluation.py \
 ```
 
 You will get three trials of error categorization and rationale output from the LLM for each query.  
+
+### Results Aggregation
+
+You can aggregate all the results after passing you benchmark json file through all these pipelines using the `aggregate_results.py`. This script will output a JSON dict containing the execution success rates for both the processing and visualization tasks, the average variable inspection scores, and the distribution of errors from the visualization evaluation.

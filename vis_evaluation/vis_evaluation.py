@@ -16,9 +16,11 @@ from glob import glob
 from tqdm import tqdm
 import copy
 import argparse
+
 prompts_csv = 'viseval_prompts.csv'
 model = "claude-3-5-sonnet-20240620"
 client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+
 def safe_parse_json_from_claude(text):
     match = re.search(r'(\{\s*"Rationale"\s*:\s*".*?"\s*,\s*"Errors"\s*:\s*".*?"\s*\})', text, re.DOTALL)
     if not match:
@@ -32,6 +34,8 @@ def safe_parse_json_from_claude(text):
         return rationale, errors
     except Exception as e:
         return "", f":x: JSON parse error: {e}"
+    
+
 def query_model(prompt, gold_img, gen_img, gold_code, gen_code, vis_query, max_tokens=2024):
     print("Querying...")
     # with open(gold_img, "rb") as f:
@@ -64,6 +68,8 @@ def query_model(prompt, gold_img, gen_img, gold_code, gen_code, vis_query, max_t
         ],
     )
     return completion
+
+
 def extract_prompts(filename):
     prompts = []
     try:
@@ -75,10 +81,23 @@ def extract_prompts(filename):
     except Exception as e:
         print(f":x: Error reading prompts: {e}")
     return prompts
+
+
 def do_vis_eval(all_queries):
     prompt_template = extract_prompts(prompts_csv)[0]
     new_queries = []
     for query in tqdm(all_queries):
+
+        if not query['visualization_test']['vis_success'] or len(query['visualization_test']['vis_gen_list']) != 1:
+            
+            copy_query = copy.deepcopy(query)
+            copy_query['visualization_llm_eval'] = {
+                "rationale": "",
+                "errors": "Crash" if not query['visualization_test']['vis_success'] else "VisFail",
+            }
+            new_queries.append(copy_query)
+            continue
+
         try:
             response = query_model(
                 prompt_template,
@@ -100,6 +119,8 @@ def do_vis_eval(all_queries):
         }
         new_queries.append(copy_query)
     return new_queries
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('filename')
