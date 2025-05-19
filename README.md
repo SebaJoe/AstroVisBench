@@ -1,4 +1,9 @@
-# AstroVisBench
+<p align="center">
+  <a href="#">
+    <img src="imgs/avb_logo.svg" style="height: 10em" alt="big dipper and polaris" />
+  </a>
+</p>
+
 
 ![AstroVisBench](imgs/overview-1.png)
 
