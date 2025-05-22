@@ -88,7 +88,9 @@ def do_vis_eval(all_queries):
     new_queries = []
     for query in tqdm(all_queries):
 
-        if not query['visualization_test']['vis_success'] or len(query['visualization_test']['vis_gen_list']) != 1:
+        print(query['visualization_test'].keys())
+
+        if not query['visualization_test']['vis_success'] or len(query['visualization_test']['gen_vis_list']) != 1:
             
             copy_query = copy.deepcopy(query)
             copy_query['visualization_llm_eval'] = {
