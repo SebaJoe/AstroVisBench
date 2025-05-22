@@ -1,4 +1,9 @@
-# AstroVisBench
+<p align="center">
+  <a href="#">
+    <img src="imgs/avb_logo.svg" style="height: 10em" alt="big dipper and polaris" />
+  </a>
+</p>
+
 
 ![AstroVisBench](imgs/overview-1.png)
 
@@ -21,18 +26,11 @@ bash install_packages.sh
 
 You will also need to download and decompress the **bench environment**, which contains the file states necessary to run the benchmark.
 
-This is optional but you can also download and decompress the **ground truth cache**, although this cache will be automatically built in your first run of the benchmark. 
+This is optional but you can also download and decompress the **ground truth cache** to speed up the benchmark execution, although this cache will be automatically built in your first run of the benchmark. 
 
-You can download the above files and the present state of the benchmark using this [link](https://utexas.box.com/s/2evj5cs3u2gqndvgc9sd66cmlggl9fg1).
+You can download the above files and the present state of the benchmark using this [link](https://utexas.box.com/s/2evj5cs3u2gqndvgc9sd66cmlggl9fg1). The bench environment should be stored under `bench_env.tar.gz` and the ground truth cache should be stored under `gt_processing_cache.tar.gz`.
 
-**CAUTION:** Setting up this enviornment and executing the benchmark will consume a large amount of storage. Please have at least 100 GB of free space available in your system.
-
-### Creating the Bench Environment
-
-Make sure to download both `bench_env.tar.gz` and `bench_env_add_on.tar.gz`.
-
-Once you have downloaded and decompressed both files, you should get two directories.
-Move all the sub-directories within in `bench_env_add_on` to `bench_environment`. Make sure you preserve the name of the sub-directories when you do this. If there are any duplicate sub-directories in `bench_environment`, remove them and copy again.
+**CAUTION:** Setting up this environment and executing the benchmark will consume a large amount of storage. Please have at least 100 GB of free space available in your system.
 
 ## Using the Benchmark
 
