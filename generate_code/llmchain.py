@@ -101,7 +101,6 @@ def single_message(model, library, message=None, chain=None, sys=""):
         completion = c_client.messages.create(
             system=system[0]['content'],
             model=model,
-            max_tokens=1024,
             messages=rest,
         )
         return completion.content[0].text
