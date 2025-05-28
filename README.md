@@ -1,9 +1,11 @@
 <p align="center">
-  <a href="#">
+  <a href="https://astrovisbench.github.io">
     <img src="imgs/avb_logo.svg" style="height: 10em" alt="big dipper and polaris" />
   </a>
 </p>
 
+<p align="center"><strong>[&nbsp;<a href="https://astrovisbench.github.io">Website & Leaderboard</a>&nbsp;]</strong></p>
+<br>
 
 ![AstroVisBench](imgs/overview-1.png)
 
