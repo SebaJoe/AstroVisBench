@@ -106,7 +106,7 @@ You can aggregate all the results after passing you benchmark json file through 
 
 ## Citation & License
 
-We release the benchmark under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
+We release the benchmark under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en) license.
 
 Please use the following citation if you found our work to be useful in your work.
 
