@@ -7,7 +7,7 @@
 
 ![AstroVisBench](imgs/overview-1.png)
 
-This is the repository containing the code needed to run the AstroVisBench benchmark. 
+This is the repository containing the code needed to run the AstroVisBench benchmark as detailed in the paper ["AstroVisBench: A Code Benchmark for Scientific Computing and Visualization in Astronomy"](https://arxiv.org/abs/2505.20538).
 The benchmark is available [here](https://huggingface.co/datasets/sebajoe/AstroVisBench) as a huggingface dataset. However, we highly recommend converting this benchmark into a JSON file in order to be used in along with scripts in this repository. You can find this raw JSON file [here](https://utexas.box.com/s/2evj5cs3u2gqndvgc9sd66cmlggl9fg1) under `astrovisbench_queries.json`.
 
 ## Environment Setup
@@ -106,15 +106,18 @@ You can aggregate all the results after passing you benchmark json file through 
 
 ## Citation & License
 
-Please use the following citations if you found our work to be useful in your work.
+We release the benchmark under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
+
+Please use the following citation if you found our work to be useful in your work.
 
 ```
-@inproceedings{
-    joseph2025astrovisbench,
-    title={AstroVisBench: A Code Benchmark for Scientific Computing and Visualization in Astronomy},
-    author={Sebastian Joseph and Syed Murtaza Husain and Stella S. R. Offner and Stéphanie Juneau and Paul Torrey and Adam S. Bolton and Juan P. Farias and Niall Gaffney and Greg Durrett and Junyi Jessy Li},
-    booktitle={},
-    year={2025},
-    url={}
+@misc{joseph2025astrovisbenchcodebenchmarkscientific,
+      title={AstroVisBench: A Code Benchmark for Scientific Computing and Visualization in Astronomy}, 
+      author={Sebastian Antony Joseph and Syed Murtaza Husain and Stella S. R. Offner and Stéphanie Juneau and Paul Torrey and Adam S. Bolton and Juan P. Farias and Niall Gaffney and Greg Durrett and Junyi Jessy Li},
+      year={2025},
+      eprint={2505.20538},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2505.20538}, 
 }
 ```
