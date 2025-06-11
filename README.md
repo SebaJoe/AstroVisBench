@@ -10,31 +10,52 @@
 ![AstroVisBench](imgs/overview-1.png)
 
 This is the repository containing the code needed to run the AstroVisBench benchmark as detailed in the paper ["AstroVisBench: A Code Benchmark for Scientific Computing and Visualization in Astronomy"](https://arxiv.org/abs/2505.20538).
-The benchmark is available [here](https://huggingface.co/datasets/sebajoe/AstroVisBench) as a huggingface dataset. However, we highly recommend converting this benchmark into a JSON file in order to be used in along with scripts in this repository. You can find this raw JSON file [here](https://utexas.box.com/s/2evj5cs3u2gqndvgc9sd66cmlggl9fg1) under `astrovisbench_queries.json`.
 
-## Environment Setup
+The benchmark is available [here](https://huggingface.co/datasets/sebajoe/AstroVisBench) as a huggingface dataset. 
 
-You need to have `conda` installed in your system. Make sure to create a separate environment as follows:
+However, we highly recommend converting this benchmark into a JSON file in order to be used in along with scripts in this repository. You can find this raw JSON file [here](https://utexas.box.com/s/2evj5cs3u2gqndvgc9sd66cmlggl9fg1) under `astrovisbench_queries.json`.
 
-```bash
-conda create -n <env_name> python=3.10
-```
 
-After you have created this environment, navigate to the `reqs_resolve` directory and run the bash script.
+## Environment Setup (UT Austin TACC Cluster)
 
-```bash
-bash install_packages.sh
-```
+### Step 1: One-time environment and data setup:
 
-You will also need to download and decompress the **bench environment**, which contains the file states necessary to run the benchmark.
+If using the UT Austin TACC clusters (Vista or Stampede3), do the following: 
+1. First navigate to work directory and create a directory for the benchmark:
+   ```bash
+   cd $WORK
+   mkdir -p $WORK/AstroVisBench
+   ```
+2. Then run the corresponding `tacc_*_install_packages.sh` script to set up the environment on the corresponding cluster. 
+  - The conda environment will be set up in `$WORK/AstroVisBench-env` directory.
+  - The conda environment is large, so it may take 10-20 minutes to set up.
+3. After the conda environment is set up, you will need to unzip the `bench_env.tar.gz` file from the UT box folder above into the `$WORK/AstroVisBench` directory. 
+   - You can do this by running: 
+     ```bash
+     tar -xzf bench_env.tar.gz -C $WORK/AstroVisBench
+     ```
+   - This will create a `bench_env` directory inside `$WORK/AstroVisBench`, which contains the necessary files for running the benchmark.
+4. You will also need to download the `astrovisbench_queries.json` file from the UT box folder above and place it in the `$WORK/AstroVisBench` directory.
 
-This is optional but you can also download and decompress the **ground truth cache** to speed up the benchmark execution, although this cache will be automatically built in your first run of the benchmark. 
+### Step 2: Provisioning resources to run the benchmark:
+The following steps are to be done every time you want to run the benchmark on the UT Austin TACC clusters:
 
-You can download the above files and the present state of the benchmark using this [link](https://utexas.box.com/s/2evj5cs3u2gqndvgc9sd66cmlggl9fg1). The bench environment should be stored under `bench_env.tar.gz` and the ground truth cache should be stored under `gt_processing_cache.tar.gz`.
+5. Run ONE of the following idev commands to start a TACC interactive session.
+   - The `idev` command will allocate resources for you to run the benchmark interactively.
+   - Make sure to activate the conda environment after starting the interactive session.
+  ```bash
+  ## Vista
+  idev -p gh-dev -N 2 -n 2 -t 00:30:00
+  conda activate $WORK/AstroVisBench-env
 
-**CAUTION:** Setting up this environment and executing the benchmark will consume a large amount of storage. Please have at least 100 GB of free space available in your system.
+  ## Stampede3
+  idev -N 3 -n 3 -t 01:00:00 
+  conda activate $WORK/AstroVisBench-env
+  ```
+6. Finally, run the corresponding `tacc_*_ray_cluster_start` script to set up the Ray cluster.
 
-## Using the Benchmark
+
+## Running the Benchmark
 
 The benchmark is a JSON file of a list-of-dicts. One dict corresponds to one query. 
 
@@ -63,9 +84,18 @@ This is the setup we used to evaluate LLM in the AstroVisBench paper:
 - **Processing:** Setup Query, Ground Truth Setup Code, Processing Query + Processing Underspecifications
 - **Visualization:** Setup Query, Ground Truth Setup Code, Processing Query + Processing Underspecifications, Ground Truth Processing Code, Visualization Query
 
-### Execution using Ray
+### Execution
 
-After you have properly setup your environment and finished filling out the benchmark, you can start the evaluation process. This involves running the `ray_exec_bench.py` script. Here are the arguments you need to specify:
+After you have properly setup your environment and finished filling out the benchmark, you can start the evaluation process. 
+This involves running the `ray_exec_bench.py` script. 
+
+First, activate the environment you set up earlier. If you are using the UT Austin TACC clusters, you can do this by running:
+
+```bash
+conda activate $WORK/AstroVisBench-env
+```
+
+Here are the arguments you need to specify:
 
 ```
 python ray_exec_bench.py \

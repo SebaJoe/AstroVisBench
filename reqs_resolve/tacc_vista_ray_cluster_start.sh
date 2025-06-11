@@ -1,7 +1,6 @@
 ## This assumes you are inside an idev env using Vista TACC cluster, via the following command:
 ## idev -p gh-dev -N 2 -n 2 -t 00:20:00  ## Wait for the interactive session to start
-
-conda activate AstroVisBench-env
+## conda activate AstroVisBench-env
 
 # --- Setup Ray Cluster ---
 # Determine GPUs per node (if SLURM provides this info; default to 1)

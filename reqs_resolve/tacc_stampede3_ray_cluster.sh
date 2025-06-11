@@ -1,7 +1,6 @@
 ## This assumes you are inside an idev env using Stampede3 TACC cluster, via the following command:
 ## idev -N 5 -n 5 -t 01:00:00  ## Wait for the interactive session to start
-
-conda activate AstroVisBench-env
+## conda activate AstroVisBench-env
 
 # --- Setup Ray Cluster ---
 nodes=$(scontrol show hostnames "$SLURM_JOB_NODELIST")  # Get the node names
