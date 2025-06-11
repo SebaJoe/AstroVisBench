@@ -36,63 +36,59 @@ You can download the above files and the present state of the benchmark using th
 
 ## Using the Benchmark
 
-The benchmark is a json file with the following schema:
+The benchmark is a JSON file of a list-of-dicts. One dict corresponds to one query. 
+
+Each dict has the following schema:
 
 ```
-|
-| - setup_query : NL query for setting up imports and environments
+| - uid : Unique identifier for the query
+| - setup_query : Natural-language query (i.e. an instruction) for setting up imports and environments
 | - setup_gt_code : Initial code for setting up imports and environments
-| - processing_query : NL query for processing and analyzing data prior to visualization
+| - processing_query : Natural-language query (i.e. an instruction) for processing and analyzing data prior to visualization
 | - processing_gt_code : Ground truth code associated with the processing query
-| - visualization_query : NL query for visualizing results
+| - visualization_query : Natural-language query (i.e. an instruction) for visualizing results
 | - visualization_gt_code : Ground truth code associated with the visualization query
 | - processing_underspecifications : clarifications for underspecified portions of the processing query
 | - visualization_underspecifications : clarifications for underspecified portions of the visualization query
 | - gt_visualization: ground truth visualization in base64 form
-| - processing_gen_code : TO BE FILLED OUT BY LLM - generated code responding to the processing query
-| - visualization_gen_code : TO BE FILLED OUT BY LLM - generated code responding to the visualization query
+| - processing_gen_code : (TO BE FILLED OUT BY LLM) - generated code responding to the processing query. This is the code which will be evaluated.
+| - visualization_gen_code : (TO BE FILLED OUT BY LLM) - generated code responding to the visualization query. This is the code which will be evaluated.
 ```
 
-You will need to use your target LLM to fill out the last two fields listed above. The code listed under these fields are what are being evaluated. The file `generate_code.py` under the `generate_code` directory is one possible way you could generate code for the purpose of this benchmark.
+The purpose of this benchmark is to evaluate a target LLM's ability to generate code that can process and visualize astronomical data. 
+So, you will need to use your target LLM to fill out `processing_gen_code` and `visualization_gen_code` fields; these will contain the code to be evaluated.
+The helper file `generate_code/generate_code.py` can be used to generate these code fields (you can also do it yourself, just make sure it lies in the queries JSON file).
 
 This is the setup we used to evaluate LLM in the AstroVisBench paper:
 - **Processing:** Setup Query, Ground Truth Setup Code, Processing Query + Processing Underspecifications
 - **Visualization:** Setup Query, Ground Truth Setup Code, Processing Query + Processing Underspecifications, Ground Truth Processing Code, Visualization Query
 
-### Execution
+### Execution using Ray
 
-After you have properly setup your environment and finished filling out the benchmark, you can start the evaluation process. This involves running the `exec_bench.py` script. Here are the arguments you need to specify:
+After you have properly setup your environment and finished filling out the benchmark, you can start the evaluation process. This involves running the `ray_exec_bench.py` script. Here are the arguments you need to specify:
 
 ```
-python exec_bench.py \
-<FILLED BENCHMARK> \
-<PATH TO BENCH ENVIRONMENT> \
---true-cache <PATH TO GROUND TRUTH CACHE> \
---gen-cache <PATH TO GENERATED CODE PROCESSING CACHE> \
---vis-cache <PATH TO GENERATED VISUALIZATION CACHE> \
---outfile <PATH TO OUTPUT JSON FILE> \
---skip-test \ # This is a flag to skip the processing equivalency test and only fill up the execution caches
---temp-caching \ # Anti-ballooning measure. Deletes cache after processing tests.
---min-diff-only \ # Omits including all differences between every comparison in the output json file
---run-all \ # Perform tests on all queries instead of skipping already completed queries
+python ray_exec_bench.py \
+<BENCHMARK FILLED WITH LLM-GENERATED CODE> \  ## astrovisbench_queries.json from the UT box folder above. IMPORTANT: this needs to be filled out with LLM-generated code first!
+<PATH TO BENCH ENVIRONMENT DIRECTORY> \   ## Unzipped bench_env.tar.gz from the UT box folder above
+--true-cache <PATH TO GROUND TRUTH CACHE DIRECTORY> \
+--gen-cache <PATH TO GENERATED CODE PROCESSING CACHE DIRECTORY> \
+--vis-cache <PATH TO GENERATED VISUALIZATION CACHE DIRECTORY> \
+--outfile <PATH TO OUTPUT JSON FILE>
 ```
 
-#### Ballooning 
+There are other arguments but you can leave them as-is.
 
-When executing the benchmark, the generated cache may balloon massively in size as it stores every variable produced in the LLM-generated code.
-To combat this, you can specify the `--temp-caching` parameter, which will delete the cache associated with each query after it is executed.
+### Processing Evaluation
 
-#### Multiprocessing
-
-This code supports multiprocessing through MPI. If you are running this script using an MPI job make sure to add the tag `--MPI`. You will need to split you benchmark JSON file into however many splits you will like. You can use `split_queries.py` to do this. These JSON splits must end in `<SPLIT NUMBER>.json`. Once this is done, you can start your MPI job by giving the prefix path of your splits (i.e. `bench_split_` is the prefix of `bench_split_0.json`) to `exec_bench.py` instead of the `<FILLED BENCHMARK>` argument. Similarly, the output files will have `<SPLIT NUMBER>.json` appended to its name when the script is run.
-
-#### Processing Evaluation
-
-The variable inspection test is performed in tandem with the code execution (unless you specify `--skip-test` in your arguments). The results of this test is located in the output json under `processing_test`. This contains the execution output, whether or not the code executed without error, and the results of the test under `inspection_results`. Under `agg_scores` you will find the unweighted and weighted (by variable depth) scores for this task. We also provide you with the detailed breakdown of how each variable was compared and the distance scores attached to each comparison. 
+The variable inspection test is performed in tandem with the code execution. The results of this test is located in the output json under `processing_test`. 
+- This contains the execution output, whether or not the code executed without error, and the results of the test under `inspection_results`. 
+- Under `agg_scores` you will find the unweighted and weighted (by variable depth) scores for this task. We also provide you with the detailed breakdown of how each variable was compared and the distance scores attached to each comparison. 
 
 ### Visualization Evaluation
 
-After you are done executing, you can do the visualization evaluation with our LLM-as-a-judge method. Use the `vis_evaluation.py` script under the `vis_evaluation` directory to do so as follows:
+After you are done with the "Execution using Ray" steps, you can do the visualization evaluation with our LLM-as-a-judge method. 
+Use the `vis_evaluation.py` script under the `vis_evaluation` directory to do so as follows:
 
 ```
 python vis_evaluation.py \
