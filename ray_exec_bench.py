@@ -1,4 +1,5 @@
 import argparse
+import io
 import json
 import os
 import time
@@ -151,6 +152,9 @@ def main(
             [res["visualization_test"]["vis_success"] for res in results]
         ).value_counts()
     )
+    print(f"Results will be saved to: '{output_file}'")
+    with io.open(output_file, "w") as f:
+        json.dump(results, f, indent=4)
 
 
 if __name__ == "__main__":

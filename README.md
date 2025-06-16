@@ -99,12 +99,23 @@ Here are the arguments you need to specify:
 
 ```
 python ray_exec_bench.py \
-<BENCHMARK FILLED WITH LLM-GENERATED CODE> \  ## astrovisbench_queries.json from the UT box folder above. IMPORTANT: this needs to be filled out with LLM-generated code first!
-<PATH TO BENCH ENVIRONMENT DIRECTORY> \   ## Unzipped bench_env.tar.gz from the UT box folder above
+--source <BENCHMARK FILLED WITH LLM-GENERATED CODE> \  ## astrovisbench_queries.json from the UT box folder above. IMPORTANT: this needs to be filled out with LLM-generated code first!
+--env <PATH TO BENCH ENVIRONMENT DIRECTORY> \   ## Unzipped bench_env.tar.gz from the UT box folder above
 --true-cache <PATH TO GROUND TRUTH CACHE DIRECTORY> \
 --gen-cache <PATH TO GENERATED CODE PROCESSING CACHE DIRECTORY> \
 --vis-cache <PATH TO GENERATED VISUALIZATION CACHE DIRECTORY> \
 --outfile <PATH TO OUTPUT JSON FILE>
+```
+
+For example:
+```
+python ray_exec_bench.py \
+--source astrovisbench_queries.json \
+--env bench_environment \
+--true-cache cache/true_cache \
+--gen-cache cache/gen_cache \
+--vis-cache cache/vis_cache \
+--outfile output.json
 ```
 
 There are other arguments but you can leave them as-is.
