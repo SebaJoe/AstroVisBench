@@ -12,6 +12,10 @@
 This is the repository containing the code needed to run the AstroVisBench benchmark as detailed in the paper ["AstroVisBench: A Code Benchmark for Scientific Computing and Visualization in Astronomy"](https://arxiv.org/abs/2505.20538).
 The benchmark is available [here](https://huggingface.co/datasets/sebajoe/AstroVisBench) as a huggingface dataset. However, we highly recommend converting this benchmark into a JSON file in order to be used in along with scripts in this repository. You can find this raw JSON file [here](https://utexas.box.com/s/2evj5cs3u2gqndvgc9sd66cmlggl9fg1) under `astrovisbench_queries.json`.
 
+## News 
+
+- **9-18-2025: AstroVisBench has been accepted into the [NeurIPS 2025 Benchmark and Datasets Track!](https://neurips.cc/Conferences/2025/CallForDatasetsBenchmarks)**
+
 ## Environment Setup
 
 You need to have `conda` installed in your system. Make sure to create a separate environment as follows:
